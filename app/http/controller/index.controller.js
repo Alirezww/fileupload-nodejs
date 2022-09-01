@@ -1,9 +1,11 @@
+const { generateImageLink } = require("../../modules/functions")
+
 class IndexController {
     create(req, res, next){
         try{
-            return res.json(req.body)
+            const image = generateImageLink(req.body.image, req);
+            return res.send(image)
         }catch(err){
-            console.log(err);
             next(err);
         }
     }

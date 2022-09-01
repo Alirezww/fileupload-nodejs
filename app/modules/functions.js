@@ -11,6 +11,11 @@ const createDirectoryUploadPath = () => {
     return path.join("public", "uploads", Year, Month, Day)
 }
 
+const generateImageLink = (imagePath, req) => {
+    return (req.protocol + "://" + req.get("host") + "/" + (imagePath.replace(/[\\\\]/gm, "/")))
+}
+
 module.exports = {
-    createDirectoryUploadPath
+    createDirectoryUploadPath,
+    generateImageLink
 }
